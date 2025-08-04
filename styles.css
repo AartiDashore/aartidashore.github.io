@@ -1,0 +1,581 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #121212;
+  color: #f5f5f5;
+  animation: fadeSlideUp 0.8s ease-in-out;
+  cursor: default;
+  font-family: 'Orbitron', sans-serif;
+  word-spacing: 8px;
+  letter-spacing: 3px;
+}
+
+#bg-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  background: #121212;
+}
+
+
+
+#astro-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 64px;
+  height: 128px;
+  z-index: 9999;
+  transform-origin: center top;
+  cursor: pointer;
+}
+
+#astro-svg, #rocket-svg {
+  width: 100%;
+  height: 100%;
+  animation: float 3.5s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+
+
+
+
+/* Custom Cursor */
+#custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #00ffd1;
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s ease, height 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+  z-index: 9999;
+  mix-blend-mode: difference;
+  background: transparent;
+  will-change: transform, width, height, background-color, border-color;
+}
+
+/* Cursor hover styles */
+.hover-link #custom-cursor {
+  width: 40px;
+  height: 40px;
+  background-color: #00ffd1;
+  border-color: transparent;
+}
+
+.hover-button #custom-cursor {
+  width: 30px;
+  height: 30px;
+  background-color: transparent;
+  border-color: #00ffd1;
+}
+
+.hover-heading #custom-cursor {
+  width: 25px;
+  height: 25px;
+  background-color: #00a88f99;
+  border-color: #00a88f;
+}
+
+/* Hide native cursor on interactive elements */
+a, .btn-glow, .project h3, h1, h2, h3 {
+  cursor: none;
+}
+
+/* Text elements keep default cursor */
+body, p, section {
+  cursor: default;
+}
+
+/* Container */
+.container {
+  width: 100%;
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+/* Header */
+header {
+  text-align: center;
+  margin-bottom: 60px;
+  animation: fadeSlideUp 1s ease-out forwards;
+}
+
+/* Headings and subtitles */
+h1 {
+  font-size: 4.5rem;
+  margin-bottom: 0.2em;
+  color: #00ffd1;
+  animation: fadeIn 1s ease-in;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+  font-family: 'Anurati', sans-serif;
+}
+
+h1:hover {
+  color: #00fff0;
+  text-shadow: 0 0 12px #00ffd1, 0 0 20px #00ffd1;
+  cursor: pointer;
+}
+
+.subtitle {
+  color: #ccc;
+  font-size: 1.2rem;
+  animation: fadeIn 1.2s ease-in;
+}
+
+/* Sections */
+section {
+  margin-bottom: 50px;
+  animation: fadeSlideUp 1s ease-out forwards;
+}
+
+h2 {
+  border-left: 4px solid #00ffd1;
+  padding-left: 12px;
+  font-size: 1.5rem;
+  margin-bottom: 1em;
+  animation: fadeSlideRight 1s ease-out forwards;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+h2:hover {
+  color: #00fff0;
+  text-shadow: 0 0 12px #00ffd1, 0 0 20px #00ffd1;
+  cursor: pointer;
+}
+
+/* Projects */
+.project {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  backdrop-filter: blur(1.5px);
+  box-shadow: 0 0 0 transparent;
+  transition: box-shadow 0.3s ease;
+  padding: 20px;
+  margin-bottom: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: fadeSlideRight 1.2s ease-out forwards;
+}
+
+.project:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 0 20px #00ffd1aa;
+}
+
+/* Skills */
+/* Container for the entire skills section */
+.skills-section {
+  padding: 60px 20px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* Section heading */
+.skills-section h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+/* Outer skill group box */
+.skill-group {
+  margin: 15px 0;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  backdrop-filter: blur(1.5px);
+  box-shadow: 0 0 0 transparent;
+  transition: box-shadow 0.3s ease;
+  max-width: 100%;
+  width: fit-content;
+  display: inline-block;
+  animation-duration: 0.8s;
+  animation-fill-mode: both;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+/* Glow + slide-in animations */
+.skill-group.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.skill-group:hover {
+  box-shadow: 0 0 15px #00ffd1aa;
+}
+
+/* Group heading */
+.skill-group h3 {
+  margin-bottom: 12px;
+  color: white;
+  font-size: 1.2rem;
+  transition: text-shadow 0.3s ease;
+}
+
+.skill-group h3:hover {
+  text-shadow: 0 0 8px #00ffd1;
+}
+
+/* Skill badges */
+.skill-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.skill-badge {
+  position: relative;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 8px 14px;
+  border-radius: 8px;
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
+}
+
+/* Shine effect */
+.skill-badge::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+  transform: skewX(-20deg);
+  opacity: 0;
+}
+
+.skill-badge:hover::before {
+  animation: shine 0.8s ease forwards;
+}
+
+@keyframes shine {
+  0% {
+    left: -75%;
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    left: 125%;
+    opacity: 0;
+  }
+}
+
+.skill-badge:hover {
+  transform: scale(1.1);
+  color: #00ffd1;
+  box-shadow: 0 0 10px #00ffd1, 0 0 25px #00ffd1aa;
+}
+
+
+/* Skill Group Box */
+
+/* Skill Group (Outer Box) */
+.skills-section {
+  padding: 50px 20px;
+}
+
+.skills-heading {
+  margin-bottom: 40px;
+  color: white;
+}
+
+/* Skill Container Layout */
+.skills-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+/* Skill Group Boxes */
+.skill-group {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 20px;
+  min-width: 200px;
+  max-width: 300px;
+  flex: 1 1 auto;
+  box-sizing: border-box;
+  transition: transform 0.5s ease, box-shadow 0.4s ease;
+  opacity: 0;
+}
+
+/* Skill Group Hover Glow */
+.skill-group:hover {
+  box-shadow: 0 0 15px #00ffd1, 0 0 40px #00ffd1aa;
+}
+
+/* Group Heading */
+.group-heading {
+  font-size: 1.4rem;
+  margin-bottom: 15px;
+  color: white;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.group-heading:hover {
+  color: #00ffd1;
+  text-shadow: 0 0 8px #00ffd1, 0 0 16px #00ffd1aa;
+}
+
+/* Skill List */
+.skill-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* Individual Skill Badge */
+.skill-badge {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 8px 14px;
+  border-radius: 8px;
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
+}
+
+.skill-badge:hover {
+  transform: scale(1.1);
+  color: #00ffd1;
+  box-shadow: 0 0 10px #00ffd1, 0 0 25px #00ffd1aa;
+}
+
+/* Slide-in Animations */
+.slide-in-left {
+  transform: translateX(-60px);
+}
+
+.slide-in-right {
+  transform: translateX(60px);
+}
+
+.slide-in-top {
+  transform: translateY(-60px);
+}
+
+.slide-in-bottom {
+  transform: translateY(60px);
+}
+
+.skill-group.animated-visible {
+  opacity: 1;
+  transform: translateX(0) translateY(0);
+  transition: transform 0.6s ease, opacity 0.6s ease;
+}
+
+
+
+/* Awards & Media section */
+.awards-media {
+  margin: 60px 0;
+}
+.awards-media ul {
+  list-style-type: disc;
+  margin-left: 20px;
+}
+.awards-media li:hover {
+  color: #00ffd1cc;
+  background-color: #1e1e1e;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: fadeSlideRight 1.2s ease-out forwards;
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 0 20px #00ffd1aa;
+}
+
+/* Links */
+a {
+  color: #00ffd1;
+  text-decoration: none;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: #00e6c3;
+  text-shadow: 0 0 8px #00ffd1, 0 0 16px #00ffd1;
+}
+
+/* Paragraphs */
+p {
+  transition: color 0.3s ease;
+}
+
+p:hover {
+  color: #00ffd1cc;
+}
+
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 20px 0;
+  color: #777;
+  background: transparent;
+  color: white;
+  position: relative;
+  z-index: 1;
+  font-size: 0.9rem;
+  pointer-events: none;
+}
+.site-footer {
+  background: transparent;
+  color: white;
+  text-align: center;
+  padding: 20px 16px;
+  font-size: 0.9rem;
+  position: relative;
+  z-index: 0;
+  min-height: 60px;
+  overflow: visible;
+  pointer-events: auto; /* allows clicking on rocket behind/above footer */
+}
+
+@media (max-width: 600px) {
+  .site-footer {
+    font-size: 0.75rem;
+    padding: 30px 12px;
+  }
+}
+
+
+/* Glow Button with Modern Animation */
+.btn-glow {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 28px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #00ffd1;
+  background-color: transparent;
+  border: 2px solid #00ffd1;
+  border-radius: 8px;
+  text-decoration: none;
+  position: relative;
+  transition: all 0.3s ease-in-out;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0, 255, 209, 0.2);
+  animation: glowPulse 2.5s infinite ease-in-out, fadeSlideUp 1.4s ease-out forwards;
+}
+
+.btn-glow::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(0,255,209,0.3) 0%, transparent 80%);
+  transform: scale(0);
+  transition: transform 0.4s ease-out;
+  z-index: 0;
+}
+
+.btn-glow:hover::before {
+  transform: scale(1);
+}
+
+.btn-glow:hover {
+  background-color: #00ffd120;
+  box-shadow: 0 0 20px rgba(0, 255, 209, 0.6);
+  color: #ffffff;
+  border-color: #00e6c3;
+}
+
+.btn-glow:active {
+  transform: scale(0.98);
+  box-shadow: 0 0 5px rgba(0, 255, 209, 0.4);
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  body {
+    padding: 0 10px;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  .container {
+    padding: 30px 15px;
+    max-width: 100%;
+  }
+
+  h2 {
+    font-size: 1.3rem;
+  }
+
+  .project {
+    padding: 15px;
+  }
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeSlideRight {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes glowPulse {
+  0% {
+    box-shadow: 0 0 10px rgba(0, 255, 209, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(0, 255, 209, 0.6);
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(0, 255, 209, 0.2);
+  }
+}
+
+/* Pause animations initially until revealed */
+.animated-visible {
+  animation-play-state: running !important;
+}
